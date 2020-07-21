@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block fonts %}
+<link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap&family=Poppins:wght@300&family=Nunito:wght@300" rel="stylesheet">
+
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+
+
+{% endblock %}
+{% block content %}
+{% include 'navbar.html' %}
+{% include 'mainpage.html' %}
+{% include 'homepage-gallery.html' %}
+<div id="form-wrapper">
+<form method="POST"  enctype="application/x-www-form-urlencoded" id='submit-form'>
+	{% csrf_token %}
+    <div class="response-box-homepage">
+        <div class="message-text">
+            <p>Leave A Message</p>
+        </div>
+        <div class="top-name-container">
+            <div class="label-text">
+                <p>{% render_field form.name.label  %}</p>
+            </div>
+            <div class="input-box-container">
+                {% render_field form.name class="input" placeholder="Your Name" %}
+            </div>
+        </div>
+        <div class="middle-email-container">
+            <div class="label-text">
+                <p>{% render_field form.email.label %}</p>
+            </div>
+            <div class="input-box-container">
+                {% render_field form.email class='input' placeholder='Something@Something.com' %}
+            </div>
+        </div>
+        <div class="last-messagebox-container">
+            <div class="label-text">
+                <p>{% render_field form.message.label %}</p>
+            </div>
+            <div class="input-box-container">
+                {% render_field form.message class='input textbox-area' placeholder='Your Message Here' %}
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+        
+    var inputtedVal = document.getElementsByClassName('input');
+    var token = document.querySelector('input').value
+    document.getElementById('submit-form').addEventListener('submit',(e)=>{
+        e.preventDefault();
+        fetch('{% url 'homepage' %}',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json', 
+                'X-CSRFToken':'{{csrf_token}}',
+                'X-Requested-With':'XMLHttpRequest',
+                'Accept': 'application/json'
+            },
+            body:JSON.stringify({
+                name:(inputtedVal.name.value),
+                email:(inputtedVal.email.value),
+                message:(inputtedVal.message.value),
+            }),
+            mode:'cors',
+            credentials:'include'    
+        })
+    })
+</script>
+<!-- <script src="{% static 'Js/homepage.js' %}"></script> -->
+<script src="{% static 'Js/gallery.js' %}"></script>
+
+{% include 'footer.html' %}
+{% endblock %}

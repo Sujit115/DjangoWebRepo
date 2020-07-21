@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block fonts %}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@310&family=Nunito&display=swap&family=Poppins:wght@300" rel="stylesheet">
+
+
+{% endblock %}
+{% block css %}
+    <link type='text/css' href="{% static 'css/bootcamp.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'navbar.html' %}
+<div class="bootcamp-wrapper-container">
+    <div class="bootcamp-search-header">
+        <form action="" method="GET">
+            <div class="search-bar">
+                <input type="text" name='query' class="bootcamp-search-box" placeholder="Search" id='search' list='datalist'>
+                <datalist id='datalist'></datalist>
+            </div>
+        </form>
+    </div>
+    <div class="wrapper">
+        <div class="bootcamp-data-container">
+            {% if results %} {% for result in results %}
+            <div class="bootcamp-show-box">
+                <div class="image-container">
+                    <img src="{{result.bootcamp_image.url}}" alt="">
+                </div>
+                <div class="bootcamp-data-text-container">
+                    <p>{{result.bootcamp_name}}</p>
+                    <p>BootCamp Duration: {{result.bootcamp_duration}}</p>
+                    <p>BootCamp Location: {{result.bootcamp_location}}</p>
+                </div>
+                <div class="on-hover-display">
+                    <button><a href="">Grab Now</a></button>
+                </div>
+            </div>
+            {% endfor %} {% endif %} {% if notfound %}
+            <div class="Error">
+                <h1>Not Found Anything. Try Something Different</h1>
+            </div>
+            {% endif %} {% if bootcamps %} {% for bootcamp in bootcamps %}
+            <div class="bootcamp-show-box">
+                <div class="image-container">
+                    <img src="{{bootcamp.bootcamp_image.url}}" alt="">
+                </div>
+                <div class="bootcamp-data-text-container">
+                    <p>{{bootcamp.bootcamp_name}}</p>
+                    <p>BootCamp Duration: {{bootcamp.bootcamp_duration}}</p>
+                    <p>BootCamp Location: {{bootcamp.bootcamp_location}}</p>
+                </div>
+                <div class="on-hover-display">
+                    <button><a href="">Grab Now</a></button>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'Js/bootcamp.js' %}"></script>
+
+{% endblock %}

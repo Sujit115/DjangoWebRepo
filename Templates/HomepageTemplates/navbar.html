@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swapfamily=Lato:wght@300&display=swap" rel="stylesheet"> > -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@310&family=Nunito&display=swap" rel="stylesheet">
+    <meta name="viewport" content="user-scalable=0, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="nav-bar-wrapper" id='navbar'>
+        <div class="nav-bar-container">
+            <div class="logo-text">
+                <p>Jiwan Bhattarai</p>
+            </div>
+            <div class="links-tab">
+                <div class="top-displayed-links">
+                    <div id='first'><a href="">Home</a></div>
+                    <div><a href="javscrpt:void(0)">Get Inspired</a>
+                        <div class="sub-menu">
+                            <span><a href="">Videos</a></span>
+                            <span><a href="">Poadcasts</a></span>
+                            <span><a href="">Gallery</a></span>
+                            <span><a href="">Spirituality</a></span>
+                        </div>
+                    </div>
+                    <div><a href="javscrpt:void(0)">Learn</a>
+                        <div class="sub-menu">
+                            <span><a href="">Carrer Guidelines</a></span>
+                            <span><a href="">Nepal Online School</a></span>
+                            <span><a href="">Nepalese IT Community</a></span>
+                        </div>
+                    </div>
+                    <div><a href="">BootCamp</a></div>
+                    <div><a href="">About Us</a></div>
+                </div>
+            </div>
+        </div>
+        <span class="menu-icons">
+            <span class="burger-menu"></span>
+        <span class="burger-menu"></span>
+        <span class="burger-menu"></span>
+        </span>
+    </div>
+    <script>
+        // var iconMenu = document.querySelector('.menu-icons')
+        // var spansBurger = document.querySelectorAll('.burger-menu')
+        // var items = document.querySelector('.links-tab')
+        // iconMenu.addEventListener('click', () => {
+        //     spansBurger[0].classList.toggle('icon')
+        //     spansBurger[1].classList.toggle('icon')
+        //     spansBurger[2].classList.toggle('icon')
+
+        //     items.classList.toggle('height-added');
+        // })
+
+        // var prevScrollpos = window.pageYOffset;
+        // window.onscroll = function() {
+        //   var currentScrollPos = window.pageYOffset;
+        //   if (prevScrollpos > currentScrollPos) {
+        //     document.getElementById("navbar").style.top = "0";
+        //   } else {
+        //     document.getElementById("navbar").style.top = "-50px";
+        //   }
+        //   prevScrollpos = currentScrollPos;
+        // } 
+         let prevpageval = window.pageYOffset;
+        window.onscroll = function() {
+            let currentpageval = window.pageYOffset;
+            if(window.scrollY == 0){
+                document.getElementById("navbar").style.backgroundColor = "transparent";
+                
+            }else if (currentpageval < prevpageval) {
+                document.getElementById("navbar").style.top = "0";
+                document.getElementById("navbar").style.backgroundColor = "#f8f9fa";
+
+            }
+
+            
+
+             else {
+               document.getElementById("navbar").style.top = "-1000px";
+            }
+            prevpageval = window.pageYOffset
+        }
+    </script>
+</body>
+
+</html>

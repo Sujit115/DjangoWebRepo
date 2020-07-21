@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Nepal Onine School</title>
+{% endblock %}
+{% block fonts %}
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@300&display=swap&family=Montserrat:wght@300&family=Raleway:wght@300&family=Poppins:wght@300;500&family=Lato:wght@400" rel="stylesheet">
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/onlineschool.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'navbar.html' %}
+    <div class="online-schoolnavbar">
+        <div class="navbarschool-wrapper">
+            <div class="svg-logo-container">
+                <img src="{% static "Img/Logo's/logo2.svg" %}" alt="" style="width: 100%;height: 90px;">
+            </div>
+            <div class="link-container">
+                <button><a href="">Courses</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="onlineschool-main-container">
+        <div class="online-school-wrapper">
+            <div class="top-most-content-part">
+                <p>The Goal Is To Provide Quality and Practical Education</p>
+            </div>
+            <div class="middle-content-wrapper">
+                <div class="boxes-wrapper">
+                    <span class="rec-box"></span>
+                    <span class="rec-box"></span>
+                    <span class="rec-box"></span>
+                    <span class="rec-box"></span>
+                </div>
+                <div class="middle-content">
+                    <p>
+                        Nepal Online School is a non-profit organization providing free education digitally with the help of youths all over the Nepal.
+                    </p>
+                </div>
+            </div>
+            <div class="last-content-wrapper">
+                <div class="rounded-wrapper">
+                    <span class="elipse"></span>
+                    <span class="elipse"></span>
+                </div>
+                <div class="content-wrapper-with-buttons">
+                    <div class="last-content-paragraph-wrapper">
+                        <p>
+                            We are for students with problems in academics, learners with halt in their learning due to various unexpected reasons, parents who had to suppress their learning curiosity. We don’t want to just give you lectures, pass the exams or increase your vocabulary.
+                            True education is experience, and we want to help you in that.
+                        </p>
+                    </div>
+                    <div class="online-school-buttons">
+                        <button class="top-most-btn"><a href="">Learners</a></button>
+                        <button class="top-most-btn"><a href="">Contribute</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="top-most-svg-container">
+                <img src="{% static 'Img/NepalOnlineSchool/image.svg' %}" alt="">
+
+            </div>
+        </div>
+    </div>
+    <div class="courses-container">
+        <div class="courses-container-wrapper">
+            <div class="courses-row1">
+                <div class="motivational-text">
+                    <p>Eat, Learn, Motivate Repeat</p>
+                </div>
+                <div class="search-bar">
+                    <input type="text" class='courses-search' placeholder="Search For Your Content Here">
+                </div>
+            </div>
+            <div class="courses-row2 course-list">
+                
+                <form action="">
+                    <div class="dropdown-container">
+                        <div class="dropdown-wrapper">
+                            <div class="show-text-container">
+                                <p>Choose Your Class</p>
+                                <div class="icon-container">
+                                	<i><img src="{% static "Img/Logo's/caret-down-solid.svg" %}"  alt=""></i>
+                                </div>
+                            </div>
+                            <div class="options-container hide">
+                                <ul>
+                                    {% for class in classes %}
+                                    <li>{{class}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="course-content-container">
+                    {%for d in data %}
+                    <div class="course-content-container-wrapper">
+                        <div class="column-1-thumbnail"png>
+                            <img src="{{d.contributer_image.url}}" alt="">
+                        </div>
+                        <div class="column2-content">
+                            <div class="header-content">
+                                <h2>{{d.title}}</h2>
+                            </div>
+                            <div class="contributer-section">
+                                <p>Contributed By: {{d.contributer_name}}</p>
+                                <p>Subject: {{d.subject_name}}</p>
+                            </div>
+                            <div class="buttons-section">
+                                <div class="watch-button button">
+                                    <button><a href="">Learn</a></button>
+                                </div>
+                                <div class="share-button button">
+                                    <button><a href="">Share</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="{% static 'Js/onlineschool.js' %}"></script> -->
+    <script>
+        document.querySelectorAll('li').forEach((key, value) => {
+    key.addEventListener('click', () => {
+        document.querySelector('.show-text-container p').innerText = key.innerText
+    })
+})
+document.addEventListener('click',(e)=>{
+    if(e.target.closest('.dropdown-container')){
+        document.querySelector('.options-container').classList.toggle('hide')
+            document.querySelector('.icon-container').classList.toggle('rotateit')
+
+        return
+
+    };
+    document.querySelector('.options-container').classList.add('hide')
+    document.querySelector('.icon-container').classList.toggle('rotateit')
+
+
+})
+
+
+
+
+
+
+
+let result = ''
+document.querySelectorAll('li').forEach((key, value) => {
+        key.addEventListener('click', async(e) => {
+            document.querySelector('.show-text-container p').innerText = key.innerText;
+            e.preventDefault();
+            data = '?Subject=' + `${document.querySelector('.show-text-container p').innerText}`;
+            history.replaceState('/nepalonlineschool/', 'Title', '/nepalonlineschool/' + data);
+            // url = '{% url 'nos' %}' 
+            response = await fetch('{% url 'nos' %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{csrf_token}}',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    subject: (document.querySelector('.show-text-container p').innerText)
+                }),
+                mode: 'cors',
+                credentials: 'include'
+            })
+            const result = await response.json()
+                .then((result) => {
+                    console.log(result.data)
+                    document.querySelector('.course-content-container').innerHTML = ''
+                    for (i in Object.keys(result.data)) {
+                        console.log(result.data[i].subject_name)
+                        document.querySelector('.course-content-container').innerHTML += (
+                            `<div class="course-content-container-wrapper">
+                                <div class="column-1-thumbnail">
+                                    <img src="${result.data[i].contributer_image}" alt="">
+                                </div>
+                                <div class="column2-content">
+                                    <div class="header-content">
+                                        <h2>${result.data[i].title}</h2>
+                                    </div>
+                                    <div class="contributer-section">
+                                        <p>Subject: ${result.data[i].subject_name}</p>
+                                        <p>Contributed By: ${result.data[i].contributer_name}</p>
+                                    </div>
+                                    <div class="buttons-section">
+                                        <div class="watch-button button">
+                                            <button><a href="">Learn</a></button>
+                                        </div>
+                                        <div class="share-button button">
+                                            <button><a href="">Share</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+                        )
+                    }
+                })
+        })
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.href.split('/') > '1') {
+                document.querySelector('.show-text-container p').innerText = window.location.href.split('=')[1].replace('+', ' ').replace('%20',' ')
+            }
+        })
+
+    })
+    </script>
+{% endblock %}

@@ -1,0 +1,308 @@
+        *,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+/* 
+
+font-family: 'Lato', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+*/
+
+.homepage-main-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+}
+.homepage-main-container .top-view-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+}
+.homepage-main-container .top-view-wrapper .text-container-homepage{
+    width: 673px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.homepage-main-container .top-view-wrapper .text-container-homepage .heading-text{
+    font-family: 'Roboto',sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: center;
+    color: #000000;
+}
+
+.homepage-main-container .top-view-wrapper .text-container-homepage .cert-text p{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    margin-top: 38px;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 42px;
+    color: #000000;
+    vertical-align: middle;
+}
+.connector-bootcamp-button{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.connector-bootcamp-button button{
+    border: 0px;
+    outline: none;
+    width: 183px;
+    height: 50px;
+    background: linear-gradient(256.78deg, #F09819 0.66%, #EDDE5D 100%);
+}
+
+.connector-bootcamp-button button a{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    transition: 650ms ease-in-out;
+
+}
+.connector-bootcamp-button button:hover{
+    background-position: right center;
+
+}
+.connector-bootcamp-button button a:hover{
+    color: #28334AFF;
+}
+.image-container-homepage img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.cert-text{
+    width: 100%;
+}
+/* .top-view-wrapper .text-container-homepage{
+    max-width: 100%;
+    max-height: 100%;
+} */
+@media only screen and (max-width:1165px){
+    .homepage-main-container{
+        height: auto;
+    }
+    .image-container-homepage img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .homepage-main-container{
+        width: 100%;
+        margin: 0;
+    }
+    .cert-text{
+        width: 80%;
+    }
+    .homepage-main-container .top-view-wrapper .text-container-homepage .heading-text{
+        font-size: 32px;
+        line-height: 46px;
+    }
+    .homepage-main-container .top-view-wrapper .text-container-homepage .cert-text{
+        font-size: 28px;
+    }
+    .text-container-homepage{
+        width: 50%;
+    }
+    .homepage-main-container .top-view-wrapper .text-container-homepage .cert-text p{
+        font-size: 25px;
+        line-height: 32px;
+    }
+    .top-view-wrapper{
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content:center;
+        margin-right: 0;
+    }
+    .top-view-wrapper .text-container-homepage{
+        align-items: center;
+        justify-content: center;
+        display: none;
+    }
+    .homepage-main-container .top-view-wrapper .text-container-homepage{
+        width: 100%;
+        margin: 0;
+    }
+    .connector-bootcamp-button button{
+        width: 150px;
+    }
+    .connector-bootcamp-button{
+        width: 100%;
+    }
+}
+@media only screen and (max-width:700px){
+    .cert-text{
+        width: 100%;
+        /* padding: 0 10px; */
+    }
+    .text-container-homepage{
+        padding: 0 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Middle - Page - Container */
+.middle-page-container{
+    width: 100%;
+    margin:100px auto;
+    text-align: center;
+}
+
+.middle-page-container .quote{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    color: #000000;
+    background-color: rgb(235, 235, 235);
+
+}
+
+
+
+
+@media only screen and (max-width:760px){
+    .homepage-main-container{
+        height: auto;
+    }
+    .middle-page-container{
+        width: 100%;
+    }
+    
+    .middle-page-container .quote{
+        font-size: 25px;
+        letter-spacing: 0;
+
+    }
+}
+
+
+/* homepage.html */
+*,*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+.response-box-homepage{
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+}
+.message-text p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 75px;
+    padding: 0 0 20px 0;
+}
+.label-text p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    padding: 20px 0;
+}
+.input-box-container input, .input-box-container .textbox-area{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    line-height: 45px;
+    font-size: 22px;
+    font-family: 'Nunito Sans', sans-serif;
+    width: 100%;
+    padding-right: 20px;
+}
+.input-box-container .textbox-area{
+    resize: none;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 200px;
+}
+.submit-btn{
+    font-family: 'B612', sans-serif;
+    height: 60px;
+    width: 140px;
+    font-size: 25px;
+    background-color: black;
+    color:white;
+    outline: none;
+    border: 1px solid black;
+    line-height: 45px;
+    transition: color 650ms ease-in-out;
+    cursor: pointer;
+}
+.last-messagebox-container{
+    display: flex;
+    flex-direction: column;
+}
+.submit-btn:hover{
+    color: red;
+}
+.last-messagebox-container .submit-btn{
+    align-self:flex-end;
+}
+input,textarea{
+    padding: 0 10px;
+}
+@media only screen and (max-width:840px){
+    .response-box-homepage{
+        width: 100%;
+        padding: 20px;
+    }
+    .message-text{
+        font-size: 30px;
+        padding: 10px 0 0px 0;
+        line-height: 50px;
+    }
+    .label-text{
+        font-size: 22px;
+    }
+    .submit-btn{
+        font-size: 20px;
+    }
+
+#form-wrapper{
+    padding: 30px 0;
+}
